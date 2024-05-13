@@ -1,5 +1,5 @@
 # ChoreTracker
-ChoreTracker is a collaborative dishwashing tracker and more. Easily log who washed dishes &amp; tally contributions. Simple &amp; fun for roommates &amp; families
+ChoreTracker is a collaborative Chore tracker and more. Easily log who washed dishes &amp; tally contributions. Simple &amp; fun for roommates &amp; families
 
 ## Installation
 
