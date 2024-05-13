@@ -1,5 +1,5 @@
 # ChoreTracker
-ChoreTracker is a collaborative Chore tracker and more. Easily log who washed dishes &amp; tally contributions. Simple &amp; fun for roommates &amp; families
+ChoreTracker: Your ultimate collaborative chore management tool and beyond. Log dishwashing duties, track contributions, and enjoy seamless tallying. Easily edit chores and tally logs with password-protected security for added peace of mind. Designed for simplicity and enjoyment, ideal for roommates and families alike.
 
 ## Installation
 
