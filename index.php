@@ -85,24 +85,7 @@
 
     <h2>List of Heroes:</h2>
     <ul>
-<?php
-// Load tally data from the log file
-$logData = file("tally.log", FILE_IGNORE_NEW_LINES);
-$tallyData = [];
-foreach ($logData as $line) {
-    $parts = explode(":", $line);
-    $name = $parts[0];
-    $tally = isset($parts[1]) ? floatval($parts[1]) : 0; // Cast to float instead of intval
-    $tallyData[$name] = $tally;
-}
-?>
-        <?php foreach ($tallyData as $name => $tally): ?>
-            <li><?php echo $name; ?>'s - Tally: <?php echo $tally; ?>
-                <?php if ($tally >= 20): ?>
-                    <button onclick="payout('<?php echo $name; ?>')">Payout</button>
-                <?php endif; ?>
-            </li>
-        <?php endforeach; ?>
+<?php include 'display_tally.php'; ?> 
     </ul>
 
     <h2>Chores Form</h2>
