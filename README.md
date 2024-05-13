@@ -6,7 +6,7 @@ ChoreTracker: Your ultimate collaborative chore management tool and beyond. Log 
 1. Download the project files.
 2. Upload the files to your web hosting environment.
 3. Ensure that your web hosting environment supports PHP.
-4. No database setup required. Data is stored in text files.
+4. Change the password on edit.php (No database setup required. Data is stored in text files.)
 
 ## Usage
 
