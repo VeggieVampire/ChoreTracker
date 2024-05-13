@@ -2,6 +2,12 @@
 // Define the correct password
 $correctPassword = "your_password_here";
 
+// Initialize the error message variable
+$errorMessage = "";
+
+// Initialize the success message variable
+$successMessage = "";
+
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Check if the password is correct
@@ -16,9 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         file_put_contents("tally.log", $tallyData);
         file_put_contents("chores_log.txt", $logData);
 
-        // Redirect back to the edit page or any other page
-        header("Location: edit_data.php");
-        exit;
+        // Set the success message
+        $successMessage = "Files were successfully edited!";
     } else {
         // Incorrect password
         $errorMessage = "Incorrect password!";
@@ -35,54 +40,17 @@ $defaultChoresData = file_get_contents("chores.values");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Data</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-            margin-top: 50px;
-        }
-        .container {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        h1 {
-            color: #333;
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        input[type="password"],
-        textarea,
-        input[type="submit"] {
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        input[type="submit"] {
-            margin-top: 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .error-message {
-            color: red;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Edit Data</h1>
+        <?php if (!empty($successMessage)): ?>
+            <p class="success-message"><?php echo $successMessage; ?></p>
+        <?php endif; ?>
+        <?php if (!empty($errorMessage)): ?>
+            <p class="error-message"><?php echo $errorMessage; ?></p>
+        <?php endif; ?>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
@@ -97,9 +65,6 @@ $defaultChoresData = file_get_contents("chores.values");
             <textarea id="log" name="log" rows="10" cols="50"><?php echo htmlspecialchars(file_get_contents("chores_log.txt")); ?></textarea>
 
             <input type="submit" value="Submit">
-            <?php if (isset($errorMessage)): ?>
-                <p class="error-message"><?php echo $errorMessage; ?></p>
-            <?php endif; ?>
         </form>
     </div>
 </body>
